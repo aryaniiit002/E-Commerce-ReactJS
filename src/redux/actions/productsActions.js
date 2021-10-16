@@ -27,9 +27,3 @@ export const selectedCategory = (product) => {
         payload: product,
     };
 };
-export const removeSelectedCategory = () => {
-    return {
-        type: ActionTypes.REMOVE_SELECTED_CATEGORY,
-    };
-
-};

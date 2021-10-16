@@ -6,8 +6,6 @@ import {
     Typography,
 } from "@material-ui/core";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { selectedCategory, removeSelectedCategory } from "../../redux/actions/productsActions";
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -33,8 +31,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Sidebar = () => {
     const classes = useStyles();
-    const dispatch = useDispatch();
-
     const [categories, setCategories] = useState([])
 
     const fetchCategories = async () => {
@@ -44,7 +40,7 @@ const Sidebar = () => {
                 console.log("Err: ", err);
             });
         setCategories(response.data);
-        console.log(response.data)
+        // console.log(response.data)
     };
 
     const renderCategories = categories.map((category) => {
@@ -68,7 +64,7 @@ const Sidebar = () => {
             <Typography className={classes.title} gutterBottom>
                 Categories
             </Typography>
-            {console.log(categories)}
+            {/* {console.log(categories)} */}
             <>{categories && renderCategories}</>
         </Container>
     );

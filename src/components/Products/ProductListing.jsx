@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setProducts } from "../../redux/actions/productsActions";
+import { setProducts, selectedCategory } from "../../redux/actions/productsActions";
 import ProductComponent from "./ProductComponent";
+import { useParams } from "react-router-dom";
 
-// We will get the data from the server and then dispatch an action and update our store.
 const ProductListing = () => {
-    // Fetch the product we have in our redux store 
-    // const products = useSelector((state) => state.allProducts.products);
+    const { category } = useParams(); // to get the ID from the route rendered/URL Parameter
     const dispatch = useDispatch();
 
     const fetchProducts = async () => {
@@ -19,14 +18,26 @@ const ProductListing = () => {
         dispatch(setProducts(response.data));
     };
 
+    const fetchCategoryProduct = async (category) => {
+        const response = await axios
+            .get(`https://fakestoreapi.com/products/category/${category}`)
+            .catch((err) => {
+                console.log("Err: ", err);
+            });
+        dispatch(selectedCategory(response.data));
+        // console.log(response.data)
+    };
+
     useEffect(() => {
-        fetchProducts();
+        // console.log(category)
+        if (category && category !== "") fetchCategoryProduct(category);
+        else fetchProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [category]);
 
     return (
         <div className="ui grid container">
-            
+            {/* {console.log(category)} */}
             <ProductComponent />
         </div>
     );

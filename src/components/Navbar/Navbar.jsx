@@ -11,7 +11,7 @@ import {
 import { Cancel, Search, ShoppingCart } from "@material-ui/icons";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
-
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: {
@@ -68,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
 const Navbar = () => {
 	const [open, setOpen] = useState(false);
 	const classes = useStyles({ open });
+
+    const cartProducts = useSelector((state) => state.cartProducts);
+	// console.log(cartProducts);
+
 	return (
 		<AppBar position="fixed">
 			<Toolbar className={classes.toolbar}>
@@ -88,7 +92,7 @@ const Navbar = () => {
 						onClick={() => setOpen(true)}
 					/>
 					<IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-						<Badge badgeContent="" color="secondary">
+						<Badge badgeContent={cartProducts.length} color="secondary">
 							<ShoppingCart />
 						</Badge>
 					</IconButton>

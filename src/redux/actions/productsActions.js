@@ -27,3 +27,15 @@ export const selectedCategory = (product) => {
         payload: product,
     };
 };
+export const addToCart = (item) => {
+    return {
+        type: ActionTypes.SELECTED_CART_PRODUCT,
+        item
+    };
+};
+export const removeFromCart = (item) => {
+    return {
+        type: ActionTypes.REMOVE_FROM_CART,
+        item
+    };
+};

@@ -8,6 +8,10 @@ const intialCategoryState = {
     product: [],
 };
 
+const intialCartProductState = {
+    cartProduct: [],
+};
+
 // Reducers
 export const productsReducer = (state = intialState, { type, payload }) => {
     switch (type) {
@@ -36,6 +40,19 @@ export const selectedCategoryReducer = (state = intialCategoryState, { type, pay
     switch (type) {
         case ActionTypes.SELECTED_CATEGORY:
             return {...state, product: payload };
+        default:
+            return state;
+    }
+};
+
+export const selectedCartProductReducer = (state = [], action) => {
+    switch (action.type) {
+        case ActionTypes.SELECTED_CART_PRODUCT:
+            return state.concat(action.item)
+        case ActionTypes.REMOVE_FROM_CART:
+            const indx = state.indexOf(action.item)
+            return state.filter((_, idx) => indx !== idx)
+
         default:
             return state;
     }

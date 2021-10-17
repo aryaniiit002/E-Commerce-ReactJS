@@ -2,10 +2,10 @@ import React from "react";
 import { Add, Remove } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Footer from "../Footer";
-import Navbar from "../Navbar/Navbar";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar/Navbar";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 // import { removeFromCart } from "../../redux/actions/productsActions";
 
 const Container = styled.div``;

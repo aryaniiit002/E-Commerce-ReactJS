@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Home from "./pages/Home";
+import Cart from './pages/Cart/Cart';
+
 import ProductDetails from "./components/Products/ProductDetails";
 import ProductListing from "./components/Products/ProductListing";
-import { Cart } from './components';
 
 import "./App.css";
 

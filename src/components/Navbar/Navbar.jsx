@@ -69,7 +69,7 @@ const Navbar = () => {
 	const [open, setOpen] = useState(false);
 	const classes = useStyles({ open });
 
-    const cartProducts = useSelector((state) => state.cartProducts);
+	const cartProducts = useSelector((state) => state.cartProducts);
 	// console.log(cartProducts);
 
 	return (

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
 	alpha,
 	AppBar,
@@ -9,7 +11,7 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { Cancel, Search, ShoppingCart } from "@material-ui/icons";
-import { useState } from "react";
+
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 
@@ -70,7 +72,6 @@ const Navbar = () => {
 	const classes = useStyles({ open });
 
 	const cartProducts = useSelector((state) => state.cartProducts);
-	// console.log(cartProducts);
 
 	return (
 		<AppBar position="fixed">

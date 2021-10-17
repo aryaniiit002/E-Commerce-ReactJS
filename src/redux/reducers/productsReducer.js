@@ -8,10 +8,6 @@ const intialCategoryState = {
     product: [],
 };
 
-const intialCartProductState = {
-    cartProduct: [],
-};
-
 // Reducers
 export const productsReducer = (state = intialState, { type, payload }) => {
     switch (type) {

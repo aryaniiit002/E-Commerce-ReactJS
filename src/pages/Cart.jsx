@@ -1,9 +1,11 @@
 import React from "react";
+
 import { Add, Remove } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar/Navbar";
+
+import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 import { useSelector } from "react-redux";
 // import { removeFromCart } from "../../redux/actions/productsActions";
@@ -156,7 +158,6 @@ const Cart = () => {
 
 	const renderCartProducts = cartProducts.map((product) => {
 		const { title, image, price, category, rating } = product;
-		// setTotalPrice(totalPrice+price);
 		total = total + price;
 		console.log(total);
 		return (
@@ -190,8 +191,6 @@ const Cart = () => {
 		);
 	});
 
-	// setTotalPrice(total);
-
 	return (
 		<Container>
 			<Navbar />
@@ -203,7 +202,6 @@ const Cart = () => {
 						<TopText>Shopping Bag({cartProducts.length})</TopText>
 						<TopText>Your Wishlist (4)</TopText>
 					</TopTexts>
-					{/* <TopButton type="filled">CHECKOUT NOW</TopButton> */}
 				</Top>
 				<Bottom>
 					<Info>

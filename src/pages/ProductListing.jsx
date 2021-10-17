@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
+
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setProducts, selectedCategory } from "../../redux/actions/productsActions";
-import ProductComponent from "./ProductComponent";
 import { useParams } from "react-router-dom";
+
+import { setProducts, selectedCategory } from "../redux/actions/productsActions";
+
+import ProductComponent from "../components/Products/ProductComponent";
 
 const ProductListing = () => {
     const { category } = useParams(); // to get the ID from the route rendered/URL Parameter
@@ -37,7 +40,6 @@ const ProductListing = () => {
 
     return (
         <div className="ui grid container">
-            {/* {console.log(category)} */}
             <ProductComponent />
         </div>
     );

@@ -1,12 +1,13 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
+
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { selectedProduct, removeSelectedProduct, addToCart } from "../../redux/actions/productsActions";
+
 import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 
 const ProductDetails = () => {
 
@@ -31,7 +32,6 @@ const ProductDetails = () => {
         return () => {
             dispatch(removeSelectedProduct());
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [productId]);
 
     const handleAddCart = (e) => {

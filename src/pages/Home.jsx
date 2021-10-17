@@ -1,6 +1,9 @@
 import React from "react";
+
 import { Grid } from "@material-ui/core";
-import { Navbar, Sidebar, Products, Footer } from '../components';
+import { Navbar, Sidebar, Footer } from '../components';
+
+import ProductListing from '../pages/ProductListing'
 
 const Home = () => {
     return (
@@ -11,7 +14,7 @@ const Home = () => {
                     <Sidebar />
                 </Grid>
                 <Grid item sm={10} xs={10}>
-                    <Products />
+                    <ProductListing />
                 </Grid>
             </Grid>
             <Footer />

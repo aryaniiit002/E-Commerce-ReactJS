@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-
 import axios from "axios";
+
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import { setProducts, selectedCategory } from "../redux/actions/productsActions";
 
-import ProductComponent from "../components/Products/ProductComponent";
+import { ProductComponent } from '../components';
 
 const ProductListing = () => {
     const { category } = useParams(); // to get the ID from the route rendered/URL Parameter
@@ -28,11 +28,9 @@ const ProductListing = () => {
                 console.log("Err: ", err);
             });
         dispatch(selectedCategory(response.data));
-        // console.log(response.data)
     };
 
     useEffect(() => {
-        // console.log(category)
         if (category && category !== "") fetchCategoryProduct(category);
         else fetchProducts();
         // eslint-disable-next-line react-hooks/exhaustive-deps

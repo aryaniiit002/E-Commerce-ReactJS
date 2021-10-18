@@ -3,7 +3,7 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 import { Navbar, Sidebar, Footer } from '../components';
 
-import ProductListing from '../pages/ProductListing'
+import { ProductListing } from './'
 
 const Home = () => {
     return (

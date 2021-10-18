@@ -41,7 +41,6 @@ const Sidebar = () => {
                 console.log("Err: ", err);
             });
         setCategories(response.data);
-        // console.log(response.data)
     };
 
     const renderCategories = categories.map((category) => {
@@ -51,13 +50,11 @@ const Sidebar = () => {
                     {category.toUpperCase()} <br />
                 </Link>
             </Typography>
-
         )
     });
 
     useEffect(() => {
         fetchCategories();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -65,7 +62,6 @@ const Sidebar = () => {
             <Typography className={classes.title} gutterBottom>
                 Categories
             </Typography>
-            {/* {console.log(categories)} */}
             <>{categories && renderCategories}</>
         </Container>
     );

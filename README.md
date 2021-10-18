@@ -11,8 +11,8 @@ Ensure you have NPM installed in your system.
 ```bash
 git clone https://github.com/aryaniiit002/E-Commerce-ReactJS.git  OR Download ZIP
 
-# Install frontend dependencies
-cd client
+# Install dependencies
+cd E-Commerce-ReactJS-main
 npm install
 ```
 <Br />
@@ -21,7 +21,6 @@ npm install
 Open a separate terminal to start the client:
 
 ```bash
-cd client
 npm start
 ```
 

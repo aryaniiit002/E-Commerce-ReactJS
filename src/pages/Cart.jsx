@@ -158,7 +158,7 @@ const Cart = () => {
 	const renderCartProducts = cartProducts.map((product) => {
 		const { title, image, price, category, rating } = product;
 		total = total + price;
-		console.log(total);
+		// console.log(parseFloat(total).toFixed(2));
 		return (
 			<>
 				<Product>
@@ -210,7 +210,7 @@ const Cart = () => {
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
 						<SummaryItem>
 							<SummaryItemText>Subtotal</SummaryItemText>
-							<SummaryItemPrice>$ {total}</SummaryItemPrice>
+							<SummaryItemPrice>$ {parseFloat(total).toFixed(2)}</SummaryItemPrice>
 						</SummaryItem>
 						<SummaryItem>
 							<SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -222,7 +222,7 @@ const Cart = () => {
 						</SummaryItem>
 						<SummaryItem type="total">
 							<SummaryItemText>Total</SummaryItemText>
-							<SummaryItemPrice>$ {total}</SummaryItemPrice>
+							<SummaryItemPrice>$ {parseFloat(total).toFixed(2)}</SummaryItemPrice>
 						</SummaryItem>
 						<Button>CHECKOUT NOW</Button>
 					</Summary>

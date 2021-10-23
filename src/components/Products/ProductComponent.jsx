@@ -6,8 +6,9 @@ import { useSelector } from "react-redux";
 const ProductComponent = () => {
     const products = useSelector((state) => state.allProducts.products);
     const categoryProducts = useSelector((state) => state.category.product);
+    // console.log(typeof(categoryProducts))
 
-    const renderList = (categoryProducts.length !== 0 ? categoryProducts : products).map((product) => {
+    const renderList = (categoryProducts.length !== 0 ? products.filter(category => category.category === categoryProducts) : products).map((product) => {
         const { id, title, image, price, category } = product;
         return (
             <div className="four wide column" key={id}>

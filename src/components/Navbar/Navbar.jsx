@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 import {
 	alpha,
@@ -11,9 +13,6 @@ import {
 	Typography,
 } from "@material-ui/core";
 import { Cancel, Search, ShoppingCart } from "@material-ui/icons";
-
-import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: {
@@ -93,7 +92,7 @@ const Navbar = () => {
 						onClick={() => setOpen(true)}
 					/>
 					<IconButton component={Link} to="/cart" aria-label="Show cart items" color="inherit">
-						<Badge badgeContent={cartProducts.length} color="secondary">
+						<Badge badgeContent={cartProducts.item.length} color="secondary">
 							<ShoppingCart />
 						</Badge>
 					</IconButton>

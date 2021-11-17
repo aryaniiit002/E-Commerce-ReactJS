@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Add, Remove } from "@material-ui/icons";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import styled from "styled-components";
+
 
 import { Navbar, Footer } from '../components';
-
-import styled from "styled-components";
-// import { removeFromCart } from "../../redux/actions/productsActions";
+import { addToCart, removeFromCart } from "../redux/actions/productsActions";
 
 const Container = styled.div``;
 
@@ -35,6 +35,13 @@ const TopButton = styled.button`
   background-color: ${(props) =>
 		props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+`;
+
+const ItemButton = styled.button`
+  cursor: pointer;
+  border: 0;
+  background-color: ${(props) =>
+		props.type === "filled" ? "black" : "transparent"};
 `;
 
 const TopTexts = styled.div`
@@ -145,20 +152,24 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
-	const cartProducts = useSelector((state) => state.cartProducts);
-	// const dispatch = useDispatch();
-
-	// const handleRemoveCart = (product) => {
-	//     dispatch(removeFromCart(product));
-	//     alert("Item Removed")
-	// };
+	const cartProducts = useSelector((state) => state.cartProducts.item);
+	const dispatch = useDispatch();
 
 	let total = 0;
 
 	const renderCartProducts = cartProducts.map((product) => {
-		const { title, image, price, category, rating } = product;
-		total = total + price;
-		// console.log(parseFloat(total).toFixed(2));
+		const { title, image, price, category, rating, qty } = product;
+		total = total + qty * price;
+
+		const handleAddItem = (product) => {
+			dispatch(addToCart(product));
+			alert("Item Added");
+		}
+
+		const handleDeleteItem = (productID) => {
+			dispatch(removeFromCart(productID));
+			alert("item deleted")
+		}
 		return (
 			<>
 				<Product>
@@ -178,11 +189,11 @@ const Cart = () => {
 					</ProductDetail>
 					<PriceDetail>
 						<ProductAmountContainer>
-							<Add />
-							<ProductAmount>1</ProductAmount>
-							<Remove />
+							<ItemButton onClick={() => { handleAddItem(product) }} ><Add /></ItemButton>
+							<ProductAmount>{qty}</ProductAmount>
+							<ItemButton onClick={() => { handleDeleteItem(product.id) }} ><Remove /></ItemButton>
 						</ProductAmountContainer>
-						<ProductPrice>$ {price}</ProductPrice>
+						<ProductPrice>$ {qty * price}</ProductPrice>
 					</PriceDetail>
 				</Product>
 				<Hr />

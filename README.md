@@ -1,9 +1,5 @@
 # E Commerce
 ## Front-end for an e-commerce website made with React.JS (Redux)
-
-### Assignment Details - 
-https://docs.google.com/document/d/1TT0SWdNcOtrNTAeVs2pSmUF8G36X7LtW1xHGPVO92JI/edit?usp=sharing
-
 <Br />
 
 ##  How to install

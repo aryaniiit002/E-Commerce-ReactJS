@@ -8,6 +8,10 @@ const intialCategoryState = {
     product: [],
 };
 
+const cartItems = {
+    item: [],
+};
+
 // Reducers
 export const productsReducer = (state = intialState, { type, payload }) => {
     switch (type) {
@@ -20,7 +24,6 @@ export const productsReducer = (state = intialState, { type, payload }) => {
 };
 
 export const selectedProductsReducer = (state = {}, { type, payload }) => {
-    // console.log(type);
     switch (type) {
         case ActionTypes.SELECTED_PRODUCT:
             return {...state, ...payload };
@@ -32,7 +35,6 @@ export const selectedProductsReducer = (state = {}, { type, payload }) => {
 };
 
 export const selectedCategoryReducer = (state = intialCategoryState, { type, payload }) => {
-    // console.log(type);
     switch (type) {
         case ActionTypes.SELECTED_CATEGORY:
             return {...state, product: payload };
@@ -41,13 +43,30 @@ export const selectedCategoryReducer = (state = intialCategoryState, { type, pay
     }
 };
 
-export const selectedCartProductReducer = (state = [], action) => {
+export const selectedCartProductReducer = (state = cartItems, action) => {
     switch (action.type) {
         case ActionTypes.SELECTED_CART_PRODUCT:
-            return state.concat(action.item)
+            const inCart = state.item.find((item) =>
+                item.id === action.payload.id ? true : false
+            );
+
+            return {
+                ...state,
+                item: inCart ?
+                    state.item.map((item) =>
+                        item.id === action.payload.id ? {...item, qty: item.qty + 1 } : item) : [...state.item, {...action.payload, qty: 1 }],
+            };
+
         case ActionTypes.REMOVE_FROM_CART:
-            const indx = state.indexOf(action.item)
-            return state.filter((_, idx) => indx !== idx)
+            const alreadyInCart = state.item.find((item) =>
+                item.id === action.payload.id ? true : false
+            );
+            return {
+                ...state,
+                item: alreadyInCart ?
+                    state.item.map((item) =>
+                        item.id === action.payload.id ? {...item, qty: item.qty - 1 } : item) : [state.item.filter((item) => item.id !== action.payload.id)],
+            };
 
         default:
             return state;
